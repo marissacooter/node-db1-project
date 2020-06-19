@@ -1,39 +1,42 @@
 // Write your models for the router
-const db = require('../../data/dbConfig');
+const db = require("../../data/dbConfig");
 
 module.exports = {
-    getAccounts,
-    getAccountById
+  getAccounts,
+  getAccountById,
+  addAccount,
+  updateAccount,
+  deleteAccount
 };
 
 // GET
 function getAccounts() {
-    return db('accounts'); // SELECT * from accounts
+  return db("accounts"); // SELECT * from accounts
 }
 
 // GET :id
 function getAccountById(id) {
-    return db('accounts') // SELECT * from accounts WHERE id = id
-        .select('*')
-        .where('id', '=', id)
+  return db("accounts") // SELECT * from accounts WHERE id = id
+    .select("*")
+    .where("id", "=", id);
 }
 
 // POST
 function addAccount(payload) {
-    return db('accounts')
-        .insert(payload)
+  return db("accounts")
+  .insert(payload);
 }
 
 // UPDATE
 function updateAccount(id, payload) {
-    return db('accounts')
-        .update(payload)
-        .where('id', '=', id)
+  return db("accounts")
+  .update(payload)
+  .where("id", "=", id);
 }
 
 // DELETE
 function deleteAccount(id) {
-    return db('accounts')
-        .where('id', '=', id)
-        .del()
+  return db("accounts")
+  .where("id", "=", id)
+  .del();
 }
